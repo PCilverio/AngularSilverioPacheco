@@ -19,6 +19,37 @@
     <hr>
     <section class="article">
         <h2 class="title-article" id="C2">TEGNOLOGIAS EMERGENTES</h2>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>Nro</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Ususario</th>
+                    <th>Correo</th>
+                </tr>
+                <tr *ngFor="let user of dataUsers; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </table>
+            <br>
+            <table border="1">
+                <tr>
+                    <th>Nro</th>
+                    <th>Abrev</th>
+                    <th>Nombre</th>
+                </tr>
+                <tr *ngFor="let item of dataLanguages; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.languages.abrev }}</td>
+                    <td>{{ item.languages.name }}</td>
+                </tr>
+            </table>
+        </div>
         <p class="paragraph-article">Las tecnologías emergentes son todas aquellas que buscan generar cambios que transformen la sociedad y la forma en que nos relacionamos con la tecnología. 
             Las empresas que deciden invertir en tecnologías emergentes suelen tener esta idea muy clara. En ese marco, muchas empresas privadas e instituciones públicas y de gobierno destinan parte de su presupuesto anual a proyectos que tienen que ver con la innovación tecnológica.
             <br>Al ser la innovación una de sus características principales, la aplicación de las tecnologías emergentes casi siempre lleva a redefinir y optimizar procesos, ya que se espera que estas nuevas implementaciones representen una mejora sustancial en las tecnologías que ya se aplican.</p>
