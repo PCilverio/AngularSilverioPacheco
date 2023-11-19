@@ -68,8 +68,8 @@ actualizar(id: string) {
   if (!aux) {
     return;
   }
-  let abrev = prompt("Nuevo valor para Abrev") || '';
-  let name = prompt("Nuevo valor para Name") || '';
+  let abrev = prompt("Nuevo valor para Abrev"+'');
+  let name = prompt("Nuevo valor para Name"+'');
   let body = {
     abrev: abrev,
     name: name
