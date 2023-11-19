@@ -8,15 +8,14 @@ import { LanguagesService } from 'src/app/services/languages.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   dataUsers: any = [];
   dataLanguages: any = [];
   name:string = "Python";
   abrev:string = "Py";
   dataSource:any = [];
-
   constructor(private usersServices: UsuariosService, private lenguajesServices: LenguajesService, private language: LanguagesService ){}
-  
   ngOnInit()
   {
     this.usersServices.getUser().subscribe ((data) => {
@@ -37,7 +36,8 @@ export class HomeComponent implements OnInit {
       console.log(this.dataSource)
     } )
   }
-  save()
+
+save()
 {
   let body = 
   {
@@ -51,8 +51,9 @@ export class HomeComponent implements OnInit {
     }
   })
 }
+
 borrar(id:string){
-  let aux = confirm("Esta Seguro de Borrar")
+  let aux = confirm("¿Esta Seguro de Borrar?")
   if(!aux) return
   this.language.deleteLanguage(id).subscribe( (data) => {
     if(data==null)
@@ -62,20 +63,22 @@ borrar(id:string){
   })
 }
 
-actualizar(id:string){
-  let aux = confirm("Esta Seguro de Actualizar")
-  let body = 
-  {
-    abrev: "test Upt abrev",
-    name:  "test Upt name"
-  }    
-  if(!aux) return
-  this.language.updateLanguage(id, body).subscribe( (data) => {
-    if(data!=null)
-    {
+actualizar(id: string) {
+  let aux = confirm("¿Estás seguro de editar?");
+  if (!aux) {
+    return;
+  }
+  let abrev = prompt("Nuevo valor para Abrev") || '';
+  let name = prompt("Nuevo valor para Name") || '';
+  let body = {
+    abrev: abrev,
+    name: name
+  };
+  this.language.updateLanguage(id, body).subscribe((data) => {
+    if (data != null) {
       window.location.reload();
     }
-  })
+  });
 }
 }
 

@@ -502,7 +502,6 @@
             </textarea>
         </div>
     </div>
-    
     <div class="tabla1">
         <table class="table1">
             <tr>
@@ -512,7 +511,6 @@
                 <th>Ususario</th>
                 <th>Correo</th>
             </tr>
-
             <tr *ngFor="let user of dataUsers; index as i">
                 <td>{{ i + 1 }}</td>
                 <td>{{ user.id }}</td>
@@ -521,7 +519,6 @@
                 <td>{{ user.email }}</td>
             </tr>
         </table>
-    
         <table class="table2">
             <tr>
                 <th>Nro</th>
@@ -535,9 +532,6 @@
             </tr>
         </table>
     </div>
-
-    
-    
     <div class="tabla2">
         <div class="table11">
             <form>
@@ -547,7 +541,7 @@
                 <label>Abrev:</label><br>
                 <input type="text" [(ngModel)]="abrev" name="abrev"><br>
                 {{abrev}}
-                <input type="button" value="Enviar" (click)="save()">
+                <input class="button" type="button" value="Enviar" (click)="save()">
             </form>
         </div>
         <div class="table22">
@@ -573,12 +567,7 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-
-    
-
-
     <hr>
     <footer class="footer" id="C5">
         <div class="redes">
