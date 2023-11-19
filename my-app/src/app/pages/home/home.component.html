@@ -19,6 +19,7 @@
     <hr>
     <section class="article">
         <h2 class="title-article" id="C2">TEGNOLOGIAS EMERGENTES</h2>
+    
         <p class="paragraph-article">Las tecnologías emergentes son todas aquellas que buscan generar cambios que transformen la sociedad y la forma en que nos relacionamos con la tecnología. 
             Las empresas que deciden invertir en tecnologías emergentes suelen tener esta idea muy clara. En ese marco, muchas empresas privadas e instituciones públicas y de gobierno destinan parte de su presupuesto anual a proyectos que tienen que ver con la innovación tecnológica.
             <br>Al ser la innovación una de sus características principales, la aplicación de las tecnologías emergentes casi siempre lleva a redefinir y optimizar procesos, ya que se espera que estas nuevas implementaciones representen una mejora sustancial en las tecnologías que ya se aplican.</p>
@@ -43,7 +44,7 @@
             </div>
         </div>
     </section>
-
+    
     <h2 id="C4" class="laboratorios">LABORATORIOS</h2>
     <div class="labor">
         <div class="contenedores">
@@ -499,6 +500,72 @@
                 }
 
             </textarea>
+        </div>
+    </div>
+    <div class="tabla1">
+        <table class="table1">
+            <tr>
+                <th>Nro</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Ususario</th>
+                <th>Correo</th>
+            </tr>
+            <tr *ngFor="let user of dataUsers; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+        <table class="table2">
+            <tr>
+                <th>Nro</th>
+                <th>Abrev</th>
+                <th>Nombre</th>
+            </tr>
+            <tr *ngFor="let item of dataLanguages; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.languages.abrev }}</td>
+                <td>{{ item.languages.name }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="tabla2">
+        <div class="table11">
+            <form>
+                <label>Nombres</label><br>
+                <input type="text" [(ngModel)]="name" name="name"><br>
+                {{name}}
+                <label>Abrev:</label><br>
+                <input type="text" [(ngModel)]="abrev" name="abrev"><br>
+                {{abrev}}
+                <input class="button" type="button" value="Enviar" (click)="save()">
+            </form>
+        </div>
+        <div class="table22">
+            <table>
+                <thead class="table222">
+                    <tr>
+                        <th>Nro</th>
+                        <th>Abrev.</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of dataSource; index as nro">
+                        <th>{{nro + 1}}</th>
+                        <th>{{row.abrev}}</th>
+                        <th>{{row.name}}</th>
+                        <th>
+                            <button (click)="actualizar(row.id)">Editar</button>
+                            <button (click)="borrar(row.id)">Eliminar</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <hr>
