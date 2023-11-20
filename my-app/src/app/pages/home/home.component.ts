@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LenguajesService } from 'src/app/services/lenguajes.service';
-import { UsuariosService } from 'src/app/services/usuarios.service'
 import { LanguagesService } from 'src/app/services/languages.service';
 
 @Component({
@@ -10,27 +8,20 @@ import { LanguagesService } from 'src/app/services/languages.service';
 })
 
 export class HomeComponent implements OnInit {
-  dataUsers: any = [];
   dataLanguages: any = [];
-  name:string = "Python";
-  abrev:string = "Py";
+  nombre:string="";
+  apellidoP:string="";
+  apellidoM:string="";
+  estadoC:string="";
+  
   dataSource:any = [];
-  constructor(private usersServices: UsuariosService, private lenguajesServices: LenguajesService, private language: LanguagesService ){}
+  constructor(private language: LanguagesService ){}
   ngOnInit()
   {
-    this.usersServices.getUser().subscribe ((data) => {
-      this.dataUsers = data;
-    });
-
-    this.lenguajesServices.getLenguajes().subscribe ((data) => {
-      let arrayLenguajes = [data];
-      this.dataLanguages = arrayLenguajes;
-    });
-
     this.language.getListLanguges().subscribe( (data) => {
       for(var key in data)
       {
-        var row = {id:key, abrev: data[key].abrev, name: data[key].name}
+        var row = {id:key, nombre: data[key].nombre, apellidoP: data[key].apellidoP, apellidoM: data[key].apellidoM, estadoC: data[key].estadoC }
         this.dataSource.push(row)
       }
       console.log(this.dataSource)
@@ -41,8 +32,10 @@ save()
 {
   let body = 
   {
-    name: this.name,
-    abrev: this.abrev
+    nombre: this.nombre,
+    apellidoP: this.apellidoP,
+    apellidoM: this.apellidoM,
+    estadoC: this.estadoC
   }
   this.language.postLanguage(body).subscribe( (data) => {
     if(data!=null)
@@ -50,6 +43,31 @@ save()
       window.location.reload();
     }
   })
+}
+actualizar(id: string) {
+  let aux = confirm("¿Estás seguro de editar?");
+  
+  if (!aux) {
+    return;
+  }
+
+  let nombre = prompt("Nuevo Nombre"+'');
+  let apellidoP = prompt("Nuevo Apellido Paterno"+'');
+  let apellidoM = prompt("Nuevo Apellido Materno"+'');
+  let estadoC = prompt("Nuevo Estado Civil")
+  
+  let body = {
+    nombre: nombre,
+    apellidoP: apellidoP,
+    apellidoM: apellidoM,
+    estadoC: estadoC
+  };
+  
+  this.language.updateLanguage(id, body).subscribe((data) => {
+    if (data != null) {
+      window.location.reload();
+    }
+  });
 }
 
 borrar(id:string){
@@ -62,23 +80,20 @@ borrar(id:string){
     }
   })
 }
-
-actualizar(id: string) {
-  let aux = confirm("¿Estás seguro de editar?");
-  if (!aux) {
-    return;
-  }
-  let abrev = prompt("Nuevo valor para Abrev"+'');
-  let name = prompt("Nuevo valor para Name"+'');
-  let body = {
-    abrev: abrev,
-    name: name
-  };
-  this.language.updateLanguage(id, body).subscribe((data) => {
-    if (data != null) {
+actualizarr(id:string){
+  let aux = confirm("Esta Seguro de Actualizar")
+  let body = 
+  {
+    abrev: "test Upt abrev",
+    name:  "test Upt name"
+  }    
+  if(!aux) return
+  this.language.updateLanguage(id, body).subscribe( (data) => {
+    if(data!=null)
+    {
       window.location.reload();
     }
-  });
+  })
 }
 }
 

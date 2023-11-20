@@ -502,45 +502,22 @@
             </textarea>
         </div>
     </div>
-    <div class="tabla1">
-        <table class="table1">
-            <tr>
-                <th>Nro</th>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Ususario</th>
-                <th>Correo</th>
-            </tr>
-            <tr *ngFor="let user of dataUsers; index as i">
-                <td>{{ i + 1 }}</td>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-            </tr>
-        </table>
-        <table class="table2">
-            <tr>
-                <th>Nro</th>
-                <th>Abrev</th>
-                <th>Nombre</th>
-            </tr>
-            <tr *ngFor="let item of dataLanguages; index as i">
-                <td>{{ i + 1 }}</td>
-                <td>{{ item.languages.abrev }}</td>
-                <td>{{ item.languages.name }}</td>
-            </tr>
-        </table>
-    </div>
     <div class="tabla2">
         <div class="table11">
             <form>
-                <label>Nombres</label><br>
-                <input type="text" [(ngModel)]="name" name="name"><br>
-                {{name}}
-                <label>Abrev:</label><br>
-                <input type="text" [(ngModel)]="abrev" name="abrev"><br>
-                {{abrev}}
+                <label>Nombre</label><br>
+                <input type="text" [(ngModel)]="nombre" name="nombre"><br>
+                {{nombre}}
+                <label>Apellido Paterno</label><br>
+                <input type="text" [(ngModel)]="apellidoP" name="apelldoP"><br>
+                {{apellidoP}}
+                <label>Apellido Materno</label><br>
+                <input type="text" [(ngModel)]="apellidoM" name="apellidopM"><br>
+                {{apellidoM}}
+                <label>Estado Civil</label><br>
+                <input type="text" [(ngModel)]="estadoC" name="estadoC"><br>
+                {{estadoC}}
+                
                 <input class="button" type="button" value="Enviar" (click)="save()">
             </form>
         </div>
@@ -549,16 +526,20 @@
                 <thead class="table222">
                     <tr>
                         <th>Nro</th>
-                        <th>Abrev.</th>
                         <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Estado Civil</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let row of dataSource; index as nro">
                         <th>{{nro + 1}}</th>
-                        <th>{{row.abrev}}</th>
-                        <th>{{row.name}}</th>
+                        <th>{{row.nombre}}</th>
+                        <th>{{row.apellidoP}}</th>
+                        <th>{{row.apellidoM}}</th>
+                        <th>{{row.estadoC}}</th>
                         <th>
                             <button (click)="actualizar(row.id)">Editar</button>
                             <button (click)="borrar(row.id)">Eliminar</button>
