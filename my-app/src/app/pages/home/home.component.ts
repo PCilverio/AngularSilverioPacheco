@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   apellidoP:string="";
   apellidoM:string="";
   estadoC:string="";
+  genero:string="";
   
   dataSource:any = [];
   constructor(private language: LanguagesService ){}
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
     this.language.getListLanguges().subscribe( (data) => {
       for(var key in data)
       {
-        var row = {id:key, nombre: data[key].nombre, apellidoP: data[key].apellidoP, apellidoM: data[key].apellidoM, estadoC: data[key].estadoC }
+        var row = {id:key, nombre: data[key].nombre, apellidoP: data[key].apellidoP, apellidoM: data[key].apellidoM, estadoC: data[key].estadoC, genero: data[key].genero }
         this.dataSource.push(row)
       }
       console.log(this.dataSource)
@@ -35,7 +36,8 @@ save()
     nombre: this.nombre,
     apellidoP: this.apellidoP,
     apellidoM: this.apellidoM,
-    estadoC: this.estadoC
+    estadoC: this.estadoC,
+    genero: this.genero
   }
   this.language.postLanguage(body).subscribe( (data) => {
     if(data!=null)
@@ -44,23 +46,25 @@ save()
     }
   })
 }
+
 actualizar(id: string) {
   let aux = confirm("¿Estás seguro de editar?");
   
   if (!aux) {
     return;
   }
-
   let nombre = prompt("Nuevo Nombre"+'');
   let apellidoP = prompt("Nuevo Apellido Paterno"+'');
   let apellidoM = prompt("Nuevo Apellido Materno"+'');
-  let estadoC = prompt("Nuevo Estado Civil")
+  let estadoC = prompt("Nuevo Estado Civil");
+  let genero = prompt("Nuevo Genero"+'')
   
   let body = {
     nombre: nombre,
     apellidoP: apellidoP,
     apellidoM: apellidoM,
-    estadoC: estadoC
+    estadoC: estadoC,
+    genero: genero
   };
   
   this.language.updateLanguage(id, body).subscribe((data) => {
@@ -80,6 +84,7 @@ borrar(id:string){
     }
   })
 }
+
 actualizarr(id:string){
   let aux = confirm("Esta Seguro de Actualizar")
   let body = 
