@@ -10,10 +10,18 @@ export class RegisterComponent {
 
   email:string = "";
   pass:string = "";
+  nombre:string = "";
+  apellido:string="";
 
   constructor(private authService:AuthService){}
 
   guardar(){
     this.authService.register(this.email, this.pass);
-  }
-}
+  } 
+} 
+
+
+
+
+
+

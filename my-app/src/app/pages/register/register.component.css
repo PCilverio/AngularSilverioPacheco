@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background: linear-gradient(rgba(0, 255, 242, 0.507),rgba(0, 0, 255, 0.582)); 
+}
+h1{
+    font-family:initial;
+    font-size: 35px;
+}
+.fondo{
+    background-color: #56dda973;
+    text-align: center;
+}
+.fondo label{
+    color: black;
+    font-family: cursive;
+    font-size: 20px;
+}
+.fondo input{
+    border-color:black;
+    color:rgba(0, 255, 0, 0.425);
+    background-color: black;
+}
+.fondo button{
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: rgba(104, 255, 3, 0.356);
+    font-family:cursive;
+    margin-bottom: 20px;
+}
+.fondo button:hover{
+    background-color: rgba(17, 88, 8, 0.589);
+    color: aqua;
+}

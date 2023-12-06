@@ -6,8 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-/* import { Test1Component } from './test1/test1.component';
- */
+
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
@@ -31,15 +30,15 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    /* Test1Component, */
     RegisterComponent,
     LoginComponent,
     LabsComponent,
-    HeaderComponent,
-    
+    HeaderComponent,    
   ],
+
   imports: [
     BrowserModule,
+
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()), 
     AppRoutingModule,

@@ -1,10 +1,27 @@
 <app-header></app-header>
-<p>register works!</p>
-<form>
-    <h1>Registrar</h1>
-    <label>email</label>
-    <input type="text" [(ngModel)]="email" name="email">
-    <label>pass</label>
-    <input type="password" [(ngModel)]="pass" name="pass">    
+<hr>
+<header>
+  <form class="fondo">
+    <h1>REGISTRAR</h1><br>
+    <label>email</label><br>
+    <input type="text" [(ngModel)]="email" name="email"><br><br>
+    <label>pass</label><br>
+    <input type="password" [(ngModel)]="pass" name="pass"><br><br>
+    
+    
+    <label>Nombre</label><br>
+    <input type="text" [(ngModel)]="nombre"><br>
+    <!-- {{nombre}} -->
+    <br>
+    <label>Apellido</label><br>
+    <input type="text" [(ngModel)]="apellido"><br>
+    <!-- {{apellido}} -->
+    <br>
     <button (click)="guardar()">Guardar</button>
-</form>    
+
+  </form>
+
+
+</header>
+
+    
